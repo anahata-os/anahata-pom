@@ -34,13 +34,13 @@
         <repository>
             <id>AnahataArtifactoryReleases</id>
             <name>Anahata Artifactory Releases</name>
-            <url>http://artifactory.anahata-it.com.au/libs-release-local</url>
+            <url>http://artifactory.anahata-it.com.au/artifactory/libs-release-local</url>
         </repository>
         
         <snapshotRepository>
             <id>AnahataArtifactorySnapshots</id>
             <name>Anahata Artifactory Snapshots</name>
-            <url>http://artifactory.anahata-it.com.au/libs-snapshot-local</url>
+            <url>http://artifactory.anahata-it.com.au/artifactory/libs-snapshot-local</url>
         </snapshotRepository>
     </distributionManagement>
     
