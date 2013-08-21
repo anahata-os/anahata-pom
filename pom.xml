@@ -30,6 +30,44 @@
         </developer>
     </developers>
     
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>Maven Repository Switchboard</name>
+            <layout>default</layout>
+            <url>http://repo1.maven.org/maven2</url>
+            
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>anahata</id>
+            <name>Anahata Enterprise Repository</name>
+            <url>http://artifactory.anahata-it.com.au/artifactory/anahata-private/</url>
+        </repository>
+    </repositories>
+    
+    <pluginRepositories>
+        <pluginRepository>
+            <id>central</id>
+            <name>Maven Repository Switchboard</name>
+            <layout>default</layout>
+            <url>http://repo1.maven.org/maven2</url>
+            
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+        
+        <pluginRepository>
+            <id>anahata</id>
+            <name>Anahata Enterprise Repository</name>
+            <url>http://artifactory.anahata-it.com.au/artifactory/anahata-private/</url>
+        </pluginRepository>
+    </pluginRepositories>
+    
     <distributionManagement>
         <repository>
             <id>AnahataArtifactoryReleases</id>
