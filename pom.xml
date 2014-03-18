@@ -7,7 +7,7 @@
     <version>1.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>anahata-pom</name>
-    
+
     <developers>
         <developer>
             <name>Pablo Rodriguez Pina</name>
@@ -18,7 +18,7 @@
                 <role>developer</role>
             </roles>
         </developer>
-        
+
         <developer>
             <name>Robert Nagajek</name>
             <email>robert@anahata-it.com.au</email>
@@ -29,14 +29,14 @@
             </roles>
         </developer>
     </developers>
-    
+
     <repositories>
         <repository>
             <id>central</id>
             <name>Maven Repository Switchboard</name>
             <layout>default</layout>
             <url>http://repo1.maven.org/maven2</url>
-            
+
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -48,26 +48,26 @@
             <url>http://artifactory.anahata-it.com.au/artifactory/anahata-private/</url>
         </repository>
     </repositories>
-    
+
     <pluginRepositories>
         <pluginRepository>
             <id>central</id>
             <name>Maven Repository Switchboard</name>
             <layout>default</layout>
             <url>http://repo1.maven.org/maven2</url>
-            
+
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
         </pluginRepository>
-        
+
         <pluginRepository>
             <id>anahata</id>
             <name>Anahata Enterprise Repository</name>
             <url>http://artifactory.anahata-it.com.au/artifactory/anahata-private/</url>
         </pluginRepository>
     </pluginRepositories>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -75,37 +75,37 @@
                 <artifactId>maven-scm-plugin</artifactId>
                 <version>1.8.1</version>
                 <configuration>
-                    <connectionType>connection</connectionType>                                        
+                    <connectionType>connection</connectionType>
                 </configuration>
-            </plugin>            
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
                 <version>3.3</version>
-                <configuration>                    
-                    <reportPlugins>                        
+                <configuration>
+                    <reportPlugins>
                         <plugin>
                             <groupId>net.sf</groupId>
                             <artifactId>stat-scm</artifactId>
                             <version>1.2.0</version>
-                            <configuration>                                
+                            <configuration>
                                 <includes>
                                     <include>**/*.java;**/*.xml;**/*.jspx;**/*.jsp;**/*.html;**/*.xhtml</include>
-                                </includes>         
+                                </includes>
                                 <!--
                                 <nonDeveloperLogins>
-                                    <nonDeveloperLogin>anahata</nonDeveloperLogin>                                    
-                                </nonDeveloperLogins>                                
+                                    <nonDeveloperLogin>anahata</nonDeveloperLogin>
+                                </nonDeveloperLogins>
                                 -->
                             </configuration>
-                        </plugin>   
-                        
+                        </plugin>
+
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-changelog-plugin</artifactId>
                             <version>2.2</version>
                         </plugin>
-                        
+
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-changes-plugin</artifactId>
@@ -116,7 +116,7 @@
                             <artifactId>maven-project-info-reports-plugin</artifactId>
                             <version>2.2</version>
                         </plugin>
-                        
+
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-javadoc-plugin</artifactId>
@@ -131,13 +131,13 @@
                             </configuration>
                         </plugin>
                         <!-- When this plugin attempts to run tests,
-                        EJB container tests are failing when running on jenkins with 
-                        java.lang.ClassFormatError: Absent Code attribute in method that is 
+                        EJB container tests are failing when running on jenkins with
+                        java.lang.ClassFormatError: Absent Code attribute in method that is
                         not native or abstract in class file javax/ejb/embeddable/EJBContainer
-                        <plugin>      
+                        <plugin>
                             <groupId>org.codehaus.mojo</groupId>
                             <artifactId>emma-maven-plugin</artifactId>
-                            <version>1.0-alpha-3</version>                            
+                            <version>1.0-alpha-3</version>
                         </plugin>
                         -->
                         <plugin>
@@ -145,18 +145,18 @@
                             <artifactId>maven-surefire-report-plugin</artifactId>
                             <version>2.6</version>
                         </plugin>
-                        
+
                         <plugin>
                             <groupId>org.codehaus.mojo</groupId>
                             <artifactId>cobertura-maven-plugin</artifactId>
                             <version>2.5.1</version>
                             <configuration>
                                 <formats>
-                                    <format>xml</format>                                    
+                                    <format>xml</format>
                                 </formats>
                             </configuration>
-                        </plugin>                        
-                        
+                        </plugin>
+
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-checkstyle-plugin</artifactId>
@@ -169,7 +169,7 @@
                             <groupId>org.codehaus.mojo</groupId>
                             <artifactId>findbugs-maven-plugin</artifactId>
                             <version>2.3.2</version>
-                            <configuration>                                
+                            <configuration>
                                 <threshold>High</threshold>
                                 <effort>Default</effort>
                             </configuration>
@@ -179,12 +179,12 @@
             </plugin>
         </plugins>
     </build>
-    
+
     <!-- Note, the following reporting section is deprecated in maven 3.x
     and reports are under <build><plugins><plugin><maven-site-plugin>
-    The reason for leaving it 'dead' here is because netbeans SQE plugin hasn't 
+    The reason for leaving it 'dead' here is because netbeans SQE plugin hasn't
     upgraded to the maven 3 layout and still expects this here to
-    detect the projects checkstyle and findbugs connfiguration, 
+    detect the projects checkstyle and findbugs connfiguration,
     I've opened the respective issue in SQE at kenai.com -->
     <reporting>
         <plugins>
@@ -194,18 +194,46 @@
                 <version>2.10</version>
                 <configuration>
                     <configLocation>http://atl-svn.assembla.com/svn/anahata-it-public/standards/anahata_checks.xml</configLocation>
-                    <lineLength>120</lineLength>                                        
+                    <lineLength>120</lineLength>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>findbugs-maven-plugin</artifactId>
                 <version>2.5.2</version>
-                <configuration>                                
+                <configuration>
                     <threshold>High</threshold>
                     <effort>Default</effort>
                 </configuration>
             </plugin>
         </plugins>
     </reporting>
+
+    <profiles>
+        <profile>
+            <id>jrebel</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.zeroturnaround</groupId>
+                        <artifactId>jrebel-maven-plugin</artifactId>
+                        <version>1.1.5</version>
+
+                        <executions>
+                            <execution>
+                                <id>generate-rebel-xml</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>generate</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
