@@ -212,9 +212,7 @@
     <profiles>
         <profile>
             <id>jrebel</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
+            
             <build>
                 <plugins>
                     <plugin>
@@ -226,6 +224,7 @@
                             <execution>
                                 <id>generate-rebel-xml</id>
                                 <phase>process-resources</phase>
+                                
                                 <goals>
                                     <goal>generate</goal>
                                 </goals>
