@@ -18,16 +18,7 @@
                 <role>developer</role>
             </roles>
         </developer>
-
-        <developer>
-            <name>Robert Nagajek</name>
-            <email>robert@anahata-it.com.au</email>
-            <organization>Anahata Technologies PTY LTD</organization>
-            <organizationUrl>http://www.anahata-it.com.au/</organizationUrl>
-            <roles>
-                <role>developer</role>
-            </roles>
-        </developer>
+        
     </developers>
 
     <repositories>
@@ -40,6 +31,12 @@
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
+        </repository>
+        
+        <repository>
+            <id>sonatype-snapshots</id>
+            <name>sonatype-snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </repository>
 
         <repository>
