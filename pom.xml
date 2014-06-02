@@ -230,9 +230,9 @@
                                 </goals>
                             </execution>
                         </executions>
-                        <configuration>
+<!--                        <configuration>
                             <addResourcesDirToRebelXml>true</addResourcesDirToRebelXml>
-                        </configuration>
+                        </configuration>-->
                     </plugin>
                 </plugins>
             </build>
