@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.anahata</groupId>
     <artifactId>anahata-pom</artifactId>
-    <version>1.5.1-SNAPSHOT</version>
+    <version>1.5.0</version>
     <packaging>pom</packaging>
     <name>anahata-pom</name>
 
@@ -26,6 +26,7 @@
         <eclipselink.version>2.5.2</eclipselink.version>
         <weld.version>2.2.4.Final</weld.version>
         <hibernate-validator.version>5.1.2.Final</hibernate-validator.version>        
+        <java.version>1.8</java.version>
     </properties>
 
     <repositories>
@@ -77,6 +78,17 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-scm-plugin</artifactId>
