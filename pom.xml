@@ -17,13 +17,18 @@
             <comments>A business-friendly OSS license</comments>
         </license>
     </licenses>
+    
+    <organization>
+        <name>Anahata Technologies Pty Ltd</name>
+        <url>http://www.anahata.uno/</url>
+    </organization>
 
     <developers>
         <developer>
             <name>Pablo Rodriguez Pina</name>
             <email>pablo@anahata-it.com.au</email>
             <organization>Anahata Technologies Pty Ltd</organization>
-            <organizationUrl>http://www.anahata-it.com.au/</organizationUrl>
+            <organizationUrl>http://www.anahata.uno</organizationUrl>
             <roles>
                 <role>developer</role>
             </roles>
@@ -33,7 +38,7 @@
             <name>Goran Lochert</name>
             <email>goran@anahata-it.com.au</email>
             <organization>Anahata Technologies Pty Ltd</organization>
-            <organizationUrl>http://www.anahata-it.com.au/</organizationUrl>
+            <organizationUrl>http://www.anahata.uno</organizationUrl>
             <roles>
                 <role>developer</role>
             </roles>
@@ -127,6 +132,19 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>1.7</version>
+                <configuration>
+                    <licenseName>apache_v2</licenseName>
+                    <organizationName><![CDATA[<A HREF="http://www.anahata.uno">Anahata Technologies Pty Ltd</A>]]></organizationName>
+                    <lineLength>120</lineLength>
+                    <inceptionYear>2012</inceptionYear>
+                    <projectName>${project.name}</projectName>
+                </configuration>
+            </plugin>  
+                      
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
