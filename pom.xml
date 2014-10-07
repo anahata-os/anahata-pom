@@ -78,7 +78,7 @@
         <repository>
             <id>anahata</id>
             <name>Anahata Private Enterprise Repository</name>
-            <url>http://artifactory.anahata-it.com.au/artifactory/anahata-private/</url>
+            <url>http://repo.anahata.uno/artifactory/anahata-private/</url>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
@@ -87,7 +87,7 @@
         <repository>
             <id>anahata-public</id>
             <name>Anahata Public Enterprise Repository</name>
-            <url>http://artifactory.anahata-it.com.au/artifactory/anahata-public/</url>
+            <url>http://repo.anahata.uno/artifactory/anahata-public/</url>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
