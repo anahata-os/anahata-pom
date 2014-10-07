@@ -4,15 +4,36 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.anahata</groupId>
     <artifactId>anahata-pom</artifactId>
-    <version>1.5.1-SNAPSHOT</version>
+    <version>1.6.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>anahata-pom</name>
+    <description>Parent PM for Anahata libraries and projects.</description>
+    <url>http://git.anahata.uno/anahata-pom</url>
+    
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
 
     <developers>
         <developer>
             <name>Pablo Rodriguez Pina</name>
             <email>pablo@anahata-it.com.au</email>
-            <organization>Anahata Technologies PTY LTD</organization>
+            <organization>Anahata Technologies Pty Ltd</organization>
+            <organizationUrl>http://www.anahata-it.com.au/</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+        
+        <developer>
+            <name>Goran Lochert</name>
+            <email>goran@anahata-it.com.au</email>
+            <organization>Anahata Technologies Pty Ltd</organization>
             <organizationUrl>http://www.anahata-it.com.au/</organizationUrl>
             <roles>
                 <role>developer</role>
@@ -52,8 +73,20 @@
 
         <repository>
             <id>anahata</id>
-            <name>Anahata Enterprise Repository</name>
+            <name>Anahata Private Enterprise Repository</name>
             <url>http://artifactory.anahata-it.com.au/artifactory/anahata-private/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        
+        <repository>
+            <id>anahata-public</id>
+            <name>Anahata Public Enterprise Repository</name>
+            <url>http://artifactory.anahata-it.com.au/artifactory/anahata-public/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </repository>
     </repositories>
 
@@ -71,8 +104,20 @@
 
         <pluginRepository>
             <id>anahata</id>
-            <name>Anahata Enterprise Repository</name>
+            <name>Anahata Private Enterprise Repository</name>
             <url>http://artifactory.anahata-it.com.au/artifactory/anahata-private/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+        
+        <pluginRepository>
+            <id>anahata-public</id>
+            <name>Anahata Public Enterprise Repository</name>
+            <url>http://artifactory.anahata-it.com.au/artifactory/anahata-public/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </pluginRepository>
     </pluginRepositories>
 
