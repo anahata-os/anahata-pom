@@ -40,6 +40,11 @@
         </developer>
         
     </developers>
+    
+    <ciManagement>
+        <system>jenkins</system>
+        <url>http://ci.anahata.uno/job/anahata-pom</url>
+    </ciManagement>
 
     <!-- versions of libraries used in maven plugins which don't see the right version on the class path -->
     <properties>
