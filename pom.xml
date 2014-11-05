@@ -345,9 +345,4 @@
 
         </dependencies>
     </dependencyManagement>
-    
-    <organization>
-        <name>Anahata</name>
-        <url>http://www.anahata-it.com.au</url>
-    </organization>
 </project>
