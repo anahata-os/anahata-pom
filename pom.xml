@@ -157,13 +157,15 @@
                             <goal>jandex</goal>
                         </goals>
                         <configuration>
-                            <fileSet>
-                                <directory>${project.build.directory}</directory>
-                                <excludes>
-                                    <exclude>**/*_mm$*</exclude>
-                                </excludes>
-                            </fileSet>
-                        </configuration>
+                            <fileSets>
+                                <fileSet>
+                                    <directory>${project.build.directory}/classes</directory>
+                                    <excludes>
+                                        <exclude>**/*_mm*</exclude>
+                                    </excludes>
+                                </fileSet>
+                            </fileSets>
+                        </configuration>                        
                     </execution>
                 </executions>
             </plugin>
