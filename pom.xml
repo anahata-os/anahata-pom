@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.anahata</groupId>
     <artifactId>anahata-pom</artifactId>
-    <version>1.5.5</version>
+    <version>1.5.6-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>anahata-pom</name>
     <description>Parent POM for Anahata libraries and projects.</description>
@@ -146,6 +146,27 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.jboss.jandex</groupId>
+                <artifactId>jandex-maven-plugin</artifactId>
+                <version>1.0.3</version>
+                <executions>
+                    <execution>
+                        <id>make-index</id>
+                        <goals>
+                            <goal>jandex</goal>
+                        </goals>
+                        <configuration>
+                            <fileSet>
+                                <directory>${project.build.directory}</directory>
+                                <excludes>
+                                    <exclude>**/*_mm$*</exclude>
+                                </excludes>
+                            </fileSet>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>license-maven-plugin</artifactId>
