@@ -104,14 +104,14 @@
             </snapshots>
         </repository>
         
-        <repository>
+<!--        <repository>
             <id>anahata-public</id>
             <name>Anahata Public Enterprise Repository</name>
             <url>http://repo.anahata.uno/artifactory/anahata-public/</url>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
-        </repository>
+        </repository>-->
     </repositories>
 
     <pluginRepositories>
