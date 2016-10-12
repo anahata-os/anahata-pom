@@ -135,14 +135,14 @@
             </snapshots>
         </pluginRepository>
         
-        <pluginRepository>
+<!--        <pluginRepository>
             <id>anahata-public</id>
             <name>Anahata Public Enterprise Repository</name>
             <url>http://artifactory.anahata-it.com.au/artifactory/anahata-public/</url>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
-        </pluginRepository>
+        </pluginRepository>-->
     </pluginRepositories>
 
     <build>
