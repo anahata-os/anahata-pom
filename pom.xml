@@ -8,12 +8,7 @@
     <name>anahata-pom</name>
     <description>Parent POM for Anahata libraries and projects.</description>
     <!--<url>http://git.anahata.uno/anahata-pom</url>-->
-    <distributionManagement>
-     <site>
-       <id>${project.artifactId}-site</id>
-       <url>http://localhost</url>
-     </site>
-    </distributionManagement>
+    
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -71,13 +66,12 @@
         <eclipselink.version>2.6.3</eclipselink.version>
         <jrebel.version>1.1.6</jrebel.version>
         <weld.version>2.2.13.Final</weld.version>
-        <hibernate-validator.version>5.1.2.Final</hibernate-validator.version>                
-        <!--<siteOutputDirectory>${project.build.directory}/site/${project.artifactId}</siteOutputDirectory>-->
-        
+        <hibernate-validator.version>5.1.2.Final</hibernate-validator.version>        
+        <java.version>1.8</java.version>
+        <siteOutputDirectory>${project.build.directory}/site/${project.artifactId}</siteOutputDirectory>
         <maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
         <build.timestamp>${maven.build.timestamp}</build.timestamp>
         <BUILD_NUMBER>LOCAL</BUILD_NUMBER>
-        <java.version>1.8</java.version>
     </properties>
 
     <repositories>
@@ -109,7 +103,7 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
-        <!--
+        
         <repository>
             <id>anahata-public</id>
             <name>Anahata Public Enterprise Repository</name>
@@ -117,7 +111,7 @@
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
-        </repository>-->
+        </repository>
     </repositories>
 
     <pluginRepositories>
@@ -140,7 +134,7 @@
                 <enabled>true</enabled>
             </snapshots>
         </pluginRepository>
-        <!--
+        
         <pluginRepository>
             <id>anahata-public</id>
             <name>Anahata Public Enterprise Repository</name>
@@ -148,7 +142,7 @@
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
-        </pluginRepository>-->
+        </pluginRepository>
     </pluginRepositories>
 
     <build>
@@ -199,47 +193,19 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
-<!--            <plugin>
-                <groupId>com.sample.plugin</groupId>
-                <artifactId>javadoc-adword-plugin</artifactId>
-                <version>1.0-RELEASE</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>rundoc</goal>
-                        </goals>
-                        <configuration>
-                            <javaDocFolder>/site/${project.artifact.id}/apidocs/</javaDocFolder>
-                            <adWordsScript>Replace content with google ads</adWordsScript>
-                            <donateWithPaypal>Donate With Paypal</donateWithPaypal>
-                            <backLinks>
-                                <backLink>
-                                    <anchorText>Anahata</anchorText>
-                                    <href>http://www.anahata.com.au</href>
-                                </backLink>
-                                <backLink>
-                                    <anchorText>Anahata Developers</anchorText>
-                                    <href>http://www.anahata.com.au/our-team.html</href>
-                                </backLink>
-                            </backLinks>
-                            <project></project>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>-->
 
-     <!--       <plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>2.8</version>
                 <configuration>
                     
                 </configuration>
-                <exec-utions>
+                <executions>
                     <execution>
                         <goals>
                             <goal>javadoc</goal>
-                            <goal>test-javadoc</goal>
+                            <!--<goal>test-javadoc</goal>-->
                         </goals>
                         <phase>site</phase>
                         <configuration>     
@@ -248,7 +214,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
             <!--            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-scm-plugin</artifactId>
@@ -257,11 +223,12 @@
                     <connectionType>connection</connectionType>
                 </configuration>
             </plugin>-->
-<!--            <plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
                 <version>3.5.1</version>
                 <configuration>
+                    
                     <reportPlugins>    
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
@@ -307,7 +274,7 @@
                         </plugin>
                     </reportPlugins>
                 </configuration>
-            </plugin>-->
+            </plugin>
         </plugins>
     </build>
 
