@@ -1,119 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.anahata</groupId>
+    <groupId>uno.anahata</groupId>
     <artifactId>anahata-pom</artifactId>
-    <version>1.7.0-SNAPSHOT</version>
+    <version>8.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>anahata-pom</name>
-    <description>Parent POM for Anahata libraries and projects.</description>
+    <description>Parent POM for Anahata</description>
     <!--<url>http://git.anahata.uno/anahata-pom</url>-->
     
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-            <comments>A business-friendly OSS license</comments>
-        </license>
-    </licenses>
     
-    <organization>
-        <name>Anahata Technologies Pty Ltd</name>
+    <organization>  
+        <name>Anahata</name>
         <url>http://www.anahata.uno/</url>
     </organization>
-
-    <developers>
-        <developer>
-            <name>Pablo Rodriguez Pina</name>
-            <email>pablo@anahata-it.com.au</email>
-            <organization>Anahata Technologies Pty Ltd</organization>
-            <organizationUrl>http://www.anahata.uno</organizationUrl>
-            <roles>
-                <role>developer</role>
-            </roles>
-        </developer>
-        
-        <developer>
-            <name>Vijay Simha</name>
-            <email>vijay@anahata-it.com.au</email>
-            <organization>Anahata Technologies Pty Ltd</organization>
-            <organizationUrl>http://www.anahata-it.com.au/</organizationUrl>
-            <roles>
-                <role>developer</role>
-            </roles>
-        </developer>
-        
-        <developer>
-            <name>Goran Lochert</name>
-            <email>goran@anahata-it.com.au</email>
-            <organization>Anahata Technologies Pty Ltd</organization>
-            <organizationUrl>http://www.anahata.uno</organizationUrl>
-            <roles>
-                <role>developer</role>
-            </roles>
-        </developer>
-        
-    </developers>
     
+    <url>https://bitbucket.org/anahata/{project.artifactId}/</url>
+
     <ciManagement>
         <system>Jenkins</system>
-        <url>http://ci.anahata.uno/job/anahata-pom</url>
+        <url>http://ci.anahata.uno/job/{project.artifactId}</url>
     </ciManagement>
+    
+    <scm>
+        <connection>scm:git:ssh://bitbucket.org/anahata/{project.artifactId}.git</connection>
+        <developerConnection>scm:git:ssh://bitbucket.org:anahata/{project.artifactId}.git</developerConnection>
+        <url>https://bitbucket.org/anahata/{project.artifactId}.git</url>
+    </scm>
 
     <!-- versions of libraries used in maven plugins which don't see the right version on the class path -->
     <properties>
-        <eclipselink.version>2.6.3</eclipselink.version>
-        <jrebel.version>1.1.6</jrebel.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        
+        <java.version>1.8</java.version>        
+        <lombok.version>1.18.16</lombok.version>
+        <jandex.version>1.0.8</jandex.version>
+        <slf4j.version>1.7.7</slf4j.version>
+        <logback.version>1.1.2</logback.version>
+        
+        
+        <javaee.version>8.0.1</javaee.version>
+        <eclipselink.version>2.6.3</eclipselink.version>        
         <weld.version>2.2.13.Final</weld.version>
-        <hibernate-validator.version>5.1.2.Final</hibernate-validator.version>        
-        <java.version>1.8</java.version>
-        <siteOutputDirectory>${project.build.directory}/site/${project.artifactId}</siteOutputDirectory>
+        <hibernate-validator.version>5.1.2.Final</hibernate-validator.version>                                
+        
         <maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
         <build.timestamp>${maven.build.timestamp}</build.timestamp>
         <BUILD_NUMBER>LOCAL</BUILD_NUMBER>
+        
+        
+        <!-- for site and other reports -->
+        <siteOutputDirectory>${project.build.directory}/site/${project.artifactId}</siteOutputDirectory>
+        <anahata-docs-dir>anahatadocs</anahata-docs-dir>
+        <siteOutputDirectory>${basedir}/../${anahata-docs-dir}/${project.artifactId}</siteOutputDirectory>
+        <scmPublish.checkoutDirectory>${project.build.directory}/scmpublish</scmPublish.checkoutDirectory> 
+        <scm-publish.siteDocOuputDirectory>${project.reporting.outputDirectory}</scm-publish.siteDocOuputDirectory>
+        <changelog.bitbucket.fileUri>${project.scm.url}/src/%REV%/%FILE%?at=master</changelog.bitbucket.fileUri>
+        <changelog.revision.bitbucket.fileUri>${project.scm.url}/commits/%REV%</changelog.revision.bitbucket.fileUri>
+        <scm-publish.pubScmUrl>scm:git:https://bitbucket.org/anahata/${project.artifactId}.git</scm-publish.pubScmUrl>
+        <scm-publish.scmBranch>master</scm-publish.scmBranch>        
+        
     </properties>
-
+    
+    
     <repositories>
         <repository>
             <id>central</id>
             <name>Maven Repository Switchboard</name>
             <layout>default</layout>
             <url>http://repo1.maven.org/maven2</url>
-
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
         </repository>
         
         <repository>
-            <id>sonatype-snapshots</id>
+            <id>ossrh</id>
             <name>sonatype-snapshots</name>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
-        </repository>
-
+        </repository> 
+        
+        <!-- TODO move to anahata-cs-pom -->
+               
         <repository>
             <id>anahata</id>
-            <name>Anahata Private Enterprise Repository</name>
-            <url>http://repo.anahata.uno/artifactory/anahata-private/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
+            <name>Anahata Private Repo</name>
+            <url>http://artifactory.anahata-it.com.au/artifactory/anahata-private/</url>
+        </repository>        
         
-<!--        <repository>
-            <id>anahata-public</id>
-            <name>Anahata Public Enterprise Repository</name>
-            <url>http://repo.anahata.uno/artifactory/anahata-public/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>-->
     </repositories>
-
+        
     <pluginRepositories>
         <pluginRepository>
             <id>central</id>
@@ -135,22 +117,15 @@
             </snapshots>
         </pluginRepository>
         
-<!--        <pluginRepository>
-            <id>anahata-public</id>
-            <name>Anahata Public Enterprise Repository</name>
-            <url>http://artifactory.anahata-it.com.au/artifactory/anahata-public/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </pluginRepository>-->
     </pluginRepositories>
 
     <build>
         <plugins>
+            
             <plugin>
                 <groupId>org.jboss.jandex</groupId>
                 <artifactId>jandex-maven-plugin</artifactId>
-                <version>1.0.3</version>
+                <version>${jandex.version}</version>
                 <executions>
                     <execution>
                         <id>make-index</id>
@@ -169,28 +144,24 @@
                         </configuration>                        
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>license-maven-plugin</artifactId>
-                <version>1.7</version>
-                <configuration>
-                    <licenseName>apache_v2</licenseName>
-                    <organizationName><![CDATA[<A HREF="http://www.anahata.uno">Anahata Technologies Pty Ltd</A>]]></organizationName>
-                    <lineLength>120</lineLength>
-                    <inceptionYear>2012</inceptionYear>
-                    <projectName>${project.name}</projectName>
-                </configuration>
-            </plugin>  
-                      
+            </plugin>            
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
+                <version>3.8.1</version>
 
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.16</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
 
@@ -215,6 +186,7 @@
                     </execution>
                 </executions>
             </plugin>
+            
             <!--            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-scm-plugin</artifactId>
@@ -223,7 +195,9 @@
                     <connectionType>connection</connectionType>
                 </configuration>
             </plugin>-->
-            <plugin>
+            
+            
+            <!--            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
                 <version>3.5.1</version>
@@ -274,75 +248,72 @@
                         </plugin>
                     </reportPlugins>
                 </configuration>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
 
-    <!-- Note, the following reporting section is deprecated in maven 3.x
-    and reports are under <build><plugins><plugin><maven-site-plugin>
-    The reason for leaving it 'dead' here is because netbeans SQE plugin hasn't
-    upgraded to the maven 3 layout and still expects this here to
-    detect the projects checkstyle and findbugs connfiguration,
-    I've opened the respective issue in SQE at kenai.com -->
-    <reporting>
-        <plugins>
-            <!--            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>2.10</version>
-                <configuration>
-                    <configLocation>http://atl-svn.assembla.com/svn/anahata-it-public/standards/anahata_checks.xml</configLocation>
-                    <lineLength>120</lineLength>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-                <version>2.5.2</version>
-                <configuration>
-                    <threshold>High</threshold>
-                    <effort>Default</effort>
-                </configuration>
-            </plugin>-->
-        </plugins>
-    </reporting>
-
-    <profiles>
-        <profile>
-            <id>jrebel</id>
-            
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.zeroturnaround</groupId>
-                        <artifactId>jrebel-maven-plugin</artifactId>
-                        <version>${jrebel.version}</version>
-
-                        <executions>
-                            <execution>
-                                <id>generate-rebel-xml</id>
-                                <phase>process-resources</phase>
-                                
-                                <goals>
-                                    <goal>generate</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <!--                        <configuration>
-                            <addResourcesDirToRebelXml>true</addResourcesDirToRebelXml>
-                        </configuration>-->
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
     
     <dependencyManagement>
         <dependencies>
+            
+            <!-- Java SE -->
+                
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jul-to-slf4j</artifactId>
+                <version>${slf4j.version}</version>          
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>log4j-over-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-ext</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+        
+            <!-- Logback conditional evaluation -->
+            <dependency>
+                <groupId>org.codehaus.janino</groupId>
+                <artifactId>janino</artifactId>
+                <version>3.1.2</version>
+            </dependency>
+            
+            <!-- Java EE -->
+        
             <dependency>
                 <groupId>javax</groupId>
                 <artifactId>javaee-api</artifactId>
-                <version>7.0</version>
+                <version>${javaee.version}</version>
                 <!--<scope>provided</scope>-->
             </dependency>
 
