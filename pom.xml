@@ -38,17 +38,15 @@
         <slf4j.version>1.7.7</slf4j.version>
         <logback.version>1.1.2</logback.version>
         
-        
         <javaee.version>8.0.1</javaee.version>
         <eclipselink.version>2.6.3</eclipselink.version>        
-        <weld.version>2.2.13.Final</weld.version>
+        <weld.version>2.4.3.Final</weld.version>
         <hibernate-validator.version>5.1.2.Final</hibernate-validator.version>                                
         
         <maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
         <build.timestamp>${maven.build.timestamp}</build.timestamp>
         <BUILD_NUMBER>LOCAL</BUILD_NUMBER>
-        
-        
+                
         <!-- for site and other reports -->
         <siteOutputDirectory>${project.build.directory}/site/${project.artifactId}</siteOutputDirectory>
         <anahata-docs-dir>anahatadocs</anahata-docs-dir>
@@ -121,7 +119,6 @@
 
     <build>
         <plugins>
-            
             <plugin>
                 <groupId>org.jboss.jandex</groupId>
                 <artifactId>jandex-maven-plugin</artifactId>
@@ -159,7 +156,7 @@
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
-                            <version>1.18.16</version>
+                            <version>${lombok.version}</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
@@ -252,7 +249,6 @@
         </plugins>
     </build>
 
-    
     <dependencyManagement>
         <dependencies>
             
