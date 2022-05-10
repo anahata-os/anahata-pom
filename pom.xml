@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>uno.anahata</groupId>
     <artifactId>anahata-pom</artifactId>
-    <version>8.0.1-SNAPSHOT</version>
+    <version>8.0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>anahata-pom</name>
     <description>Parent POM for Anahata</description>
@@ -34,7 +34,7 @@
         
         <java.version>1.8</java.version>        
         <lombok.version>1.18.24</lombok.version>
-        <jandex.version>1.0.8</jandex.version>
+        <jandex.version>1.2.2</jandex.version>
         <slf4j.version>1.7.36</slf4j.version>
         <logback.version>1.2.11</logback.version>
         
