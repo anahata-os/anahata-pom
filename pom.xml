@@ -27,7 +27,7 @@
         <developerConnection>scm:git:ssh://bitbucket.org:anahata/{project.artifactId}.git</developerConnection>
         <url>https://bitbucket.org/anahata/{project.artifactId}.git</url>
     </scm>
-
+    
     <!-- versions of libraries used in maven plugins which don't see the right version on the class path -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -87,11 +87,17 @@
         <!-- TODO move to anahata-cs-pom -->
                
         <repository>
-            <id>anahata</id>
-            <name>Anahata Private Repo</name>
-            <url>http://artifactory.anahata-it.com.au/artifactory/anahata-private/</url>
-        </repository>        
-        
+            <id>anahata-public</id>
+            <name>Anahata Public Repo</name>
+            <url>http://repo.anahata.uno/artifactory/anahata-public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+                
     </repositories>
         
     <pluginRepositories>
@@ -107,15 +113,32 @@
         </pluginRepository>
 
         <pluginRepository>
-            <id>anahata</id>
-            <name>Anahata Private Enterprise Repository</name>
-            <url>http://artifactory.anahata-it.com.au/artifactory/anahata-private/</url>
+            <id>anahata-public</id>
+            <name>Anahata Public Repository</name>
+            <url>http://repo.anahata.uno/artifactory/anahata-public/</url>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
         </pluginRepository>
         
     </pluginRepositories>
+    
+    <distributionManagement>
+        <site>
+            <id>${project.artifactId}-site</id>
+            <url>http://anahata.uno/os/</url>
+        </site>
+        <repository>
+            <id>libs-release-local</id>
+            <url>http://repo.anahata.uno/artifactory/libs-release</url>
+        </repository>
+        
+        <snapshotRepository>
+            <id>libs-snapshot-local</id>
+            <url>http://repo.anahata.uno/artifactory/libs-snapshot</url>
+        </snapshotRepository>
+        
+    </distributionManagement>
 
     <build>
         <plugins>
