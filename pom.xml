@@ -129,12 +129,14 @@
             <url>http://anahata.uno/os/</url>
         </site>
         <repository>
-            <id>libs-public-release-local</id>
+            <id>anahata</id>
+            <name>libs-public-release-local</name>
             <url>http://repo.anahata.uno/artifactory/libs-public-release-local</url>
         </repository>
         
         <snapshotRepository>
-            <id>libs-public-snapshot-local</id>
+            <id>anahata</id>
+            <name>libs-public-snapshot-local</name>
             <url>http://repo.anahata.uno/artifactory/libs-public-snapshot-local</url>
         </snapshotRepository>
         
