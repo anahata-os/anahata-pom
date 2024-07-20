@@ -1,6 +1,6 @@
 node {
     stage ('Build') {
-        git branch:'master', url: 'git@bitbucket.org:anahata/anahata-pom.git'
+        
         withMaven (
             maven: 'Maven 3.8.6',
             jdk: 'JDK 1.8') {
