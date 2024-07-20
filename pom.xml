@@ -59,7 +59,7 @@
         <!-- Unit testing -->
         <junit.version>4.13.2</junit.version>
         
-        
+        <!--Build -->
         <maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
         <build.timestamp>${maven.build.timestamp}</build.timestamp>
         <BUILD_NUMBER>LOCAL</BUILD_NUMBER>
