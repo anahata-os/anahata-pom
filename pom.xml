@@ -39,16 +39,26 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         
+        <!-- core java -->
         <java.version>1.8</java.version>        
         <lombok.version>1.18.32</lombok.version>
         <jandex.version>3.2.0</jandex.version>
+        
+        <!-- logging -->
         <slf4j.version>1.7.7</slf4j.version>
         <logback.version>1.1.2</logback.version>
         
+        <!-- Jakarta specs -->
         <jakarta.version>8.0.0</jakarta.version>
+        <!-- Jakarta implementations -->
         <eclipselink.version>2.7.15</eclipselink.version>        
         <weld.version>3.1.9.Final</weld.version>
         <hibernate-validator.version>6.2.5.Final</hibernate-validator.version>                                
+        <glassfish-el.version>3.0.4</glassfish-el.version>
+        
+        <!-- Unit testing -->
+        <junit.version>5.10.3</junit.version>
+        
         
         <maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
         <build.timestamp>${maven.build.timestamp}</build.timestamp>
@@ -358,29 +368,62 @@
                 <groupId>jakarta.platform</groupId>
                 <artifactId>jakarta.jakartaee-api</artifactId>
                 <version>${jakarta.version}</version>
-                <!--<scope>provided</scope>-->
             </dependency>
             
             <dependency>
                 <groupId>org.eclipse.persistence</groupId>
                 <artifactId>eclipselink</artifactId>
-                <version>${eclipselink.version}</version>     
-                <!--<scope>provided</scope>-->       
+                <version>${eclipselink.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.eclipse.persistence</groupId>
+                        <artifactId>jakarta.persistence</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>                              
 
             <dependency>
-                <artifactId>hibernate-validator</artifactId>
-                <groupId>org.hibernate</groupId>
-                <version>${hibernate-validator.version}</version>
-                <!--<scope>provided</scope>-->            
+                <groupId>org.hibernate.validator</groupId>
+                <artifactId>hibernate-validator</artifactId>            
+                <version>${hibernate-validator.version}</version>                        
+                <exclusions>
+                    <exclusion>
+                        <groupId>jakarta.validation</groupId>
+                        <artifactId>jakarta.validation-api</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
                 <groupId>org.jboss.weld.se</groupId>
                 <artifactId>weld-se-core</artifactId>
-                <version>${weld.version}</version>
-                <!--<scope>provided</scope>-->
-            </dependency>            
+                <version>${weld.version}</version>                
+                <exclusions>
+                    <exclusion>
+                        <groupId>jakarta.inject</groupId>
+                        <artifactId>jakarta.inject-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>jakarta.enterprise</groupId>
+                        <artifactId>jakarta.enterprise.cdi-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            
+            <dependency>
+                <groupId>org.glassfish</groupId>
+                <artifactId>jakarta.el</artifactId>
+                <version>${glassfish-el.version}</version>
+                <!--Cant exclude api as it is in the same jar -->
+            </dependency>
+            
+        
+        <dependency>
+            <groupId>org.junit</groupId>
+            <artifactId>junit</artifactId>            
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
 
         </dependencies>
     </dependencyManagement>
