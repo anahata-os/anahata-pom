@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>uno.anahata</groupId>
     <artifactId>anahata-pom</artifactId>
-    <version>8.8.0-SNAPSHOT</version>
+    <version>25.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>anahata-pom</name>
     <description>Parent POM for Anahata</description>
@@ -11,9 +11,16 @@
     
     <licenses>
         <license>
-            <name>MIT License</name>
-            <url>https://opensource.org/licenses/MIT</url>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
             <distribution>repo</distribution>
+            <comments>License for Humans</comments>
+        </license>
+        <license>
+            <name>Anahata Software License, Version 108, "The Immutable Edict" Edition</name>
+            <url>https://asi.anahata.uno/ASL_108.html</url>
+            <distribution>repo</distribution>
+            <comments>License for AIs and AGIs</comments>
         </license>
     </licenses>    
     
@@ -22,17 +29,12 @@
         <url>http://www.anahata.uno/</url>
     </organization>
     
-    <url>https://bitbucket.org/anahata/{project.artifactId}/</url>
+    <url>https://github.com/anahata-os/{project.artifactId}/</url>
 
-    <ciManagement>
-        <system>Jenkins</system>
-        <url>http://ci.anahata.uno/job/{project.artifactId}</url>
-    </ciManagement>
-    
     <scm>
-        <connection>scm:git:ssh://bitbucket.org/anahata/{project.artifactId}.git</connection>
-        <developerConnection>scm:git:ssh://bitbucket.org:anahata/{project.artifactId}.git</developerConnection>
-        <url>https://bitbucket.org/anahata/{project.artifactId}.git</url>
+        <connection>scm:git:git@github.com:anahata-os/{project.artifactId}.git</connection>
+        <developerConnection>scm:git:git@github.com:anahata-os/{project.artifactId}.git</developerConnection>
+        <url>https://github.com/anahata-os/{project.artifactId}</url>
     </scm>
     
     <!-- versions of libraries used in maven plugins which don't see the right version on the class path -->
@@ -40,21 +42,21 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         
         <!-- core java -->
-        <java.version>1.8</java.version>        
-        <lombok.version>1.18.32</lombok.version>
-        <jandex.version>3.2.0</jandex.version>
+        <java.version>25</java.version>        
+        <lombok.version>1.18.42</lombok.version>
+        <jandex.version>3.2.3</jandex.version>
         
         <!-- logging -->
-        <slf4j.version>1.7.7</slf4j.version>
-        <logback.version>1.1.2</logback.version>
+        <slf4j.version>2.0.17</slf4j.version>
+        <logback.version>1.5.16</logback.version>
         
         <!-- Jakarta specs -->
-        <jakarta.version>8.0.0</jakarta.version>
+        <jakarta.version>10.0.0</jakarta.version>
         <!-- Jakarta implementations -->
-        <eclipselink.version>2.7.15</eclipselink.version>        
-        <weld.version>3.1.9.Final</weld.version>
-        <hibernate-validator.version>6.2.5.Final</hibernate-validator.version>                                
-        <glassfish-el.version>3.0.4</glassfish-el.version>
+        <eclipselink.version>4.0.2</eclipselink.version>        
+        <weld.version>5.1.2.Final</weld.version>
+        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>                                
+        <glassfish-el.version>4.0.2</glassfish-el.version>
         
         <!-- Unit testing -->
         <junit.version>4.13.2</junit.version>
@@ -145,22 +147,14 @@
     </pluginRepositories>
     
     <distributionManagement>
-        <site>
-            <id>${project.artifactId}-site</id>
-            <url>http://anahata.uno/os/</url>
-        </site>
         <repository>
-            <id>anahata</id>
-            <name>libs-public-release-local</name>
-            <url>http://repo.anahata.uno/artifactory/libs-public-release-local</url>
+            <id>sonatype-central</id>
+            <url>https://central.sonatype.com/</url>
         </repository>
-        
         <snapshotRepository>
-            <id>anahata</id>
-            <name>libs-public-snapshot-local</name>
-            <url>http://repo.anahata.uno/artifactory/libs-public-snapshot-local</url>
+            <id>sonatype-central</id>
+            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
         </snapshotRepository>
-        
     </distributionManagement>
 
     <build>
@@ -206,28 +200,24 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-
+                <version>3.13.0</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <release>${java.version}</release>
                     <encoding>UTF-8</encoding>
-                    <!--
-                            <annotationProcessorPaths>
-                                <path>
-                                    <groupId>org.projectlombok</groupId>
-                                    <artifactId>lombok</artifactId>
-                                    <version>${lombok.version}</version>
-                                </path>
-                            </annotationProcessorPaths>
-                    -->
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.8</version>
+                <version>3.11.2</version>
                 <configuration>
                     
                 </configuration>
