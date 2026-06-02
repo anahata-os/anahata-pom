@@ -43,19 +43,19 @@
         
         <!-- core java -->
         <java.version>25</java.version>        
-        <lombok.version>1.18.42</lombok.version>
-        <jandex.version>3.2.3</jandex.version>
+        <lombok.version>1.18.46</lombok.version>
+        <jandex.version>3.5.3</jandex.version>
         
         <!-- logging -->
         <slf4j.version>2.0.17</slf4j.version>
         <logback.version>1.5.16</logback.version>
         
         <!-- Jakarta specs -->
-        <jakarta.version>10.0.0</jakarta.version>
+        <jakarta.version>11.0.0</jakarta.version>
         <!-- Jakarta implementations -->
-        <eclipselink.version>4.0.2</eclipselink.version>        
-        <weld.version>5.1.2.Final</weld.version>
-        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>                                
+        <eclipselink.version>5.0.1-RC1</eclipselink.version>        
+        <weld.version>6.0.4.Final</weld.version>
+        <hibernate-validator.version>9.1.0.Final</hibernate-validator.version>                                
         <glassfish-el.version>4.0.2</glassfish-el.version>
         
         <!-- Unit testing -->
@@ -70,81 +70,11 @@
         <!-- for site and other reports -->
         <siteOutputDirectory>${project.build.directory}/site/${project.artifactId}</siteOutputDirectory>
         <anahata-docs-dir>anahatadocs</anahata-docs-dir>
-        <siteOutputDirectory>${basedir}/../${anahata-docs-dir}/${project.artifactId}</siteOutputDirectory>
-        <scmPublish.checkoutDirectory>${project.build.directory}/scmpublish</scmPublish.checkoutDirectory> 
-        <scm-publish.siteDocOuputDirectory>${project.reporting.outputDirectory}</scm-publish.siteDocOuputDirectory>
-        <changelog.bitbucket.fileUri>${project.scm.url}/src/%REV%/%FILE%?at=master</changelog.bitbucket.fileUri>
-        <changelog.revision.bitbucket.fileUri>${project.scm.url}/commits/%REV%</changelog.revision.bitbucket.fileUri>
-        <scm-publish.pubScmUrl>scm:git:https://bitbucket.org/anahata/${project.artifactId}.git</scm-publish.pubScmUrl>
-        <scm-publish.scmBranch>master</scm-publish.scmBranch>        
         
     </properties>
     
-    
-    <repositories>
-        <repository>
-            <id>central</id>
-            <name>Maven Repository Switchboard</name>
-            <layout>default</layout>
-            <url>http://repo1.maven.org/maven2</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
         
-        <repository>
-            <id>ossrh</id>
-            <name>sonatype-snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository> 
-        
-        <!-- TODO move to anahata-cs-pom -->
-               
-        <repository>
-            <id>anahata-public</id>
-            <name>Anahata Public Repo</name>
-            <url>http://repo.anahata.uno/artifactory/anahata-public/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-                
-    </repositories>
-        
-    <pluginRepositories>
-        <pluginRepository>
-            <id>central</id>
-            <name>Maven Repository Switchboard</name>
-            <layout>default</layout>
-            <url>http://repo1.maven.org/maven2</url>
 
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-
-        <pluginRepository>
-            <id>anahata-public</id>
-            <name>Anahata Public Repository</name>
-            <url>http://repo.anahata.uno/artifactory/anahata-public/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </pluginRepository>
-        
-    </pluginRepositories>
     
     <distributionManagement>
         <repository>
@@ -235,69 +165,6 @@
                     </execution>
                 </executions>
             </plugin>
-            
-            <!--            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-scm-plugin</artifactId>
-                <version>1.8.1</version>
-                <configuration>
-                    <connectionType>connection</connectionType>
-                </configuration>
-            </plugin>-->
-            
-            
-            <!--            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>3.5.1</version>
-                <configuration>
-                    
-                    <reportPlugins>    
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-project-info-reports-plugin</artifactId>
-                            <version>2.7</version>
-                            <reportSets>
-                                <reportSet>
-                                    <reports>
-                                        <report>cim</report>                                        
-                                        <report>dependencies</report>
-                                        <report>dependency-info</report>
-                                        <report>index</report>
-                                        <report>issue-tracking</report>
-                                        <report>project-team</report>
-                                        <report>mailing-list</report>                                                                                
-                                        <report>license</report>
-                                        <report>scm</report>
-                                        <report>summary</report>
-                                    </reports>
-                                </reportSet>
-                            </reportSets>
-                        </plugin>                    
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-javadoc-plugin</artifactId>
-                            <version>2.10</version>
-                            <configuration>
-                                <failOnError>false</failOnError>
-                                <additionalparam>-Xdoclint:none</additionalparam>         
-                                <reportSets>
-                                    <reportSet>
-                                        <id>default</id>
-                                        <configuration>
-                                            <additionalparam>-Xdoclint:none</additionalparam>         
-                                            <failOnError>false</failOnError>       
-                                        </configuration>
-                                        <reports>                                                                                        
-                                            <report>javadoc</report>                                          
-                                        </reports>
-                                    </reportSet>         
-                                </reportSets>
-                            </configuration>                            
-                        </plugin>
-                    </reportPlugins>
-                </configuration>
-            </plugin>-->
         </plugins>
     </build>
 
@@ -412,26 +279,26 @@
             </dependency>
             
         
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>            
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>            
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
         
-        <dependency>
-            <groupId>org.powermock</groupId>
-            <artifactId>powermock-module-junit4</artifactId>
-            <version>${powermock.version}</version>
-            <scope>test</scope>
-        </dependency>
+            <dependency>
+                <groupId>org.powermock</groupId>
+                <artifactId>powermock-module-junit4</artifactId>
+                <version>${powermock.version}</version>
+                <scope>test</scope>
+            </dependency>
 
-        <dependency>
-            <groupId>org.powermock</groupId>
-            <artifactId>powermock-api-mockito</artifactId>
-            <version>${powermock.version}</version>
-            <scope>test</scope>
-        </dependency>
+            <dependency>
+                <groupId>org.powermock</groupId>
+                <artifactId>powermock-api-mockito</artifactId>
+                <version>${powermock.version}</version>
+                <scope>test</scope>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
