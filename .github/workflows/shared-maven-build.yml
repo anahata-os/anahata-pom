@@ -36,11 +36,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Trust Anahata Insecure HTTP Artifactory
-        run: |
-          mkdir -p ~/.m2
-          echo '<settings><mirrors><mirror><id>maven-default-http-blocker</id><mirrorOf>external:http:*,!anahata-public</mirrorOf><url>http://repo.anahata.uno/artifactory/anahata-public/</url></mirror></mirrors></settings>' > ~/.m2/settings.xml
-
       - name: Set up JDK & Maven
         uses: actions/setup-java@v4
         with:
@@ -52,6 +47,11 @@ jobs:
           server-password: MAVEN_PASSWORD
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
+
+      - name: Trust Anahata Insecure HTTP Artifactory
+        run: |
+          mkdir -p ~/.m2
+          echo '<settings><mirrors><mirror><id>maven-default-http-blocker</id><mirrorOf>external:http:*,!anahata-public</mirrorOf><url>http://repo.anahata.uno/artifactory/anahata-public/</url></mirror></mirrors></settings>' > ~/.m2/settings.xml
 
       - name: Get Project Version
         id: get_version
