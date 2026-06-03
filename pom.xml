@@ -84,7 +84,7 @@
         
         <!-- Unit testing -->
         <junit.version>4.13.2</junit.version>
-        <powermock.version>1.5.5</powermock.version>
+        <powermock.version>1.7.4</powermock.version>
         
         <!--Build -->
         <maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
