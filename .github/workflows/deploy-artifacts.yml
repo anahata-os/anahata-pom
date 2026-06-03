@@ -63,3 +63,11 @@ jobs:
               mvn deploy -DskipTests -P release -ntp -DaltSnapshotDeploymentRepository=sonatype-central::default::https://central.sonatype.com/repository/maven-snapshots/
             fi
           fi
+
+      - name: Trigger Downstream Build in anahata-os-pom
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          repository: anahata-os/anahata-os-pom
+          event-type: upstream-pom-updated
+        continue-on-error: true

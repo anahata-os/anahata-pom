@@ -36,6 +36,30 @@
         <developerConnection>scm:git:git@github.com:anahata-os/{project.artifactId}.git</developerConnection>
         <url>https://github.com/anahata-os/{project.artifactId}</url>
     </scm>
+
+    <repositories>
+        <repository>
+            <id>sonatype-snapshots</id>
+            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>anahata-public</id>
+            <name>Anahata Public Repository</name>
+            <url>http://repo.anahata.uno/artifactory/anahata-public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
     
     <!-- versions of libraries used in maven plugins which don't see the right version on the class path -->
     <properties>
