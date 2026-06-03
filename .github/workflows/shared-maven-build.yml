@@ -37,7 +37,7 @@ jobs:
           echo '<settings><mirrors><mirror><id>allow-http</id><mirrorOf>external:http:*,!anahata-public</mirrorOf><url>http://repo.anahata.uno/artifactory/anahata-public/</url></mirror></mirrors></settings>' > ~/.m2/settings.xml
 
       - name: Set up JDK & Maven
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           java-version: ${{ inputs.java-version }}
           distribution: 'temurin'
