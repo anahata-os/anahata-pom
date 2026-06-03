@@ -39,7 +39,7 @@ jobs:
       - name: Trust Anahata Insecure HTTP Artifactory
         run: |
           mkdir -p ~/.m2
-          echo '<settings><mirrors><mirror><id>allow-http</id><mirrorOf>external:http:*,!anahata-public</mirrorOf><url>http://repo.anahata.uno/artifactory/anahata-public/</url></mirror></mirrors></settings>' > ~/.m2/settings.xml
+          echo '<settings><mirrors><mirror><id>maven-default-http-blocker</id><mirrorOf>external:http:*,!anahata-public</mirrorOf><url>http://repo.anahata.uno/artifactory/anahata-public/</url></mirror></mirrors></settings>' > ~/.m2/settings.xml
 
       - name: Set up JDK & Maven
         uses: actions/setup-java@v4
@@ -101,7 +101,7 @@ jobs:
       - name: Trust Anahata Insecure HTTP Artifactory
         run: |
           mkdir -p ~/.m2
-          echo '<settings><mirrors><mirror><id>allow-http</id><mirrorOf>external:http:*,!anahata-public</mirrorOf><url>http://repo.anahata.uno/artifactory/anahata-public/</url></mirror></mirrors></settings>' > ~/.m2/settings.xml
+          echo '<settings><mirrors><mirror><id>maven-default-http-blocker</id><mirrorOf>external:http:*,!anahata-public</mirrorOf><url>http://repo.anahata.uno/artifactory/anahata-public/</url></mirror></mirrors></settings>' > ~/.m2/settings.xml
 
       - name: Set up JDK & Maven
         uses: actions/setup-java@v4
