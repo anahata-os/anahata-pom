@@ -48,10 +48,27 @@ jobs:
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
 
-      - name: Trust Anahata Insecure HTTP Artifactory
+      - name: Trust Artifactory & Load Sonatype Credentials
         run: |
           mkdir -p ~/.m2
-          echo '<settings><mirrors><mirror><id>maven-default-http-blocker</id><mirrorOf>external:http:*,!anahata-public</mirrorOf><url>http://repo.anahata.uno/artifactory/anahata-public/</url></mirror></mirrors></settings>' > ~/.m2/settings.xml
+          cat << 'EOF' > ~/.m2/settings.xml
+          <settings>
+            <servers>
+              <server>
+                <id>sonatype-central</id>
+                <username>${{ secrets.CENTRAL_USERNAME }}</username>
+                <password>${{ secrets.CENTRAL_PASSWORD }}</password>
+              </server>
+            </servers>
+            <mirrors>
+              <mirror>
+                <id>maven-default-http-blocker</id>
+                <mirrorOf>external:http:*,!anahata-public</mirrorOf>
+                <url>http://repo.anahata.uno/artifactory/anahata-public/</url>
+              </mirror>
+            </mirrors>
+          </settings>
+          EOF
 
       - name: Get Project Version
         id: get_version
@@ -98,17 +115,34 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Trust Anahata Insecure HTTP Artifactory
-        run: |
-          mkdir -p ~/.m2
-          echo '<settings><mirrors><mirror><id>maven-default-http-blocker</id><mirrorOf>external:http:*,!anahata-public</mirrorOf><url>http://repo.anahata.uno/artifactory/anahata-public/</url></mirror></mirrors></settings>' > ~/.m2/settings.xml
-
       - name: Set up JDK & Maven
         uses: actions/setup-java@v4
         with:
           java-version: ${{ inputs.java-version }}
           distribution: 'temurin'
           cache: 'maven'
+
+      - name: Trust Artifactory & Load Sonatype Credentials
+        run: |
+          mkdir -p ~/.m2
+          cat << 'EOF' > ~/.m2/settings.xml
+          <settings>
+            <servers>
+              <server>
+                <id>sonatype-central</id>
+                <username>${{ secrets.CENTRAL_USERNAME }}</username>
+                <password>${{ secrets.CENTRAL_PASSWORD }}</password>
+              </server>
+            </servers>
+            <mirrors>
+              <mirror>
+                <id>maven-default-http-blocker</id>
+                <mirrorOf>external:http:*,!anahata-public</mirrorOf>
+                <url>http://repo.anahata.uno/artifactory/anahata-public/</url>
+              </mirror>
+            </mirrors>
+          </settings>
+          EOF
 
       - name: Build and Generate Javadoc
         run: mvn clean install javadoc:javadoc -DskipTests -ntp
