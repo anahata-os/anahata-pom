@@ -148,7 +148,7 @@ jobs:
         run: mvn clean install javadoc:javadoc -DskipTests -ntp
 
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v6
 
       - name: Prepare Deployment Directory
         run: |
